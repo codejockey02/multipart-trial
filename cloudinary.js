@@ -20,11 +20,11 @@ router.post('/upload', function (req, res){
         res.write('received upload:\n\n');
         res.end(util.inspect({fields: fields, files: files}));  
     });
-    form.on('end', function(fields, files) {
-        var temp_path = this.openedFiles[0].path;
-        var file_name = this.openedFiles[0].name;
+    form.on('file', function(name, file) {
+        var temp_path = file.path;
+        var file_name = file.name;
 
-        cloudinary.uploader.upload(temp_path, function(result) { 
+        cloudinary.uploader.upload( temp_path, function(result) { 
             console.log(result);
             console.log(result["url"]); }, { public_id: file_name });
         
