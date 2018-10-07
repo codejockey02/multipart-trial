@@ -21,7 +21,7 @@ router.post('/upload', function (req, res){
         res.end(util.inspect({fields: fields, files: files}));  
     });
     form.on('file', function(name, file) {
-        var temp_path = file.path;
+        var temp_path = req.body.path;
         console.log(temp_path);
         var file_name = file.name;
         console.log(file_name);
