@@ -2,7 +2,7 @@
   "name": "needy",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "cloudinary.js",
   "dependencies": {
     "basic-auth": "^1.0.4",
     "bcryptjs": "^2.3.0",
