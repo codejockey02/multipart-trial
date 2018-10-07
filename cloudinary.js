@@ -22,7 +22,9 @@ router.post('/upload', function (req, res){
     });
     form.on('file', function(name, file) {
         var temp_path = file.path;
+        console.log(temp_path);
         var file_name = file.name;
+        console.log(file_name);
 
         cloudinary.uploader.upload( temp_path, function(result) { 
             console.log(result);
