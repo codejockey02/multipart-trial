@@ -1,5 +1,5 @@
 {
-  "name": "needy",
+  "name": "multipart",
   "version": "1.0.0",
   "description": "",
   "main": "cloudinary.js",
@@ -24,17 +24,16 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codejockey02/needy.git"
+    "url": "git+https://github.com/codejockey02/multipart-trial.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codejockey02/needy/issues"
+    "url": "https://github.com/codejockey02/multipart-trial/issues"
   },
-  "homepage": "https://github.com/codejockey02/needy#readme"
+  "homepage": "https://github.com/codejockey02/multipart-trial#readme"
 }
