@@ -27,7 +27,6 @@ router.post('/upload', function (req, res){
         cloudinary.uploader.upload(temp_path, function(result) { 
             console.log(result);
             console.log(result["url"]); }, { public_id: file_name });
-        res.status(201).json({message: "Success"});
         
     });
 });
