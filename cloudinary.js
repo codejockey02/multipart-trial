@@ -50,7 +50,8 @@ const storage = multer.diskStorage({
       }
 });
 const upload = multer({ storage: storage });
-app.post('/upload', upload.single('avatar'), (req, res) => {
+app.post('/upload', upload.any(), (req, res) => {
+    console.log(req.file);
     if (!req.file) {
       console.log("No file received");
       return res.send({
@@ -61,6 +62,7 @@ app.post('/upload', upload.single('avatar'), (req, res) => {
         console.log('file received');
         const host = req.host;
         const filePath = req.protocol + "://" + host + '/' + req.file.path;
+        console.log(filepath);
         return res.send({
             success: true,
             path: filePath
