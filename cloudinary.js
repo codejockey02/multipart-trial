@@ -10,6 +10,7 @@ var cloudinary = require('cloudinary');
 var util = require('util');
 const bodyParser = require('body-parser');
 const morgan = require('morgan'); 
+const fs = require('fs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -51,11 +52,11 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 app.post('/upload', upload.single('avatar'), (req, res) => {
-    console.log(req.files);
+    console.log(req.file);
 
-    var tmp_path = req.files[0].path;
+    var tmp_path = req.file.path;
 
-    var target_path = 'uploads/' + req.files[0].originalname;
+    var target_path = 'uploads/' + req.file.originalname;
 
     var src = fs.createReadStream(tmp_path);
     var dest = fs.createWriteStream(target_path);
