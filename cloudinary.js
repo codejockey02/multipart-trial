@@ -51,7 +51,18 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 app.post('/upload', upload.single('avatar'), (req, res) => {
-    console.log(req.file);
+    console.log(req.files);
+
+    var tmp_path = req.files[0].path;
+
+    var target_path = 'uploads/' + req.files[0].originalname;
+
+    var src = fs.createReadStream(tmp_path);
+    var dest = fs.createWriteStream(target_path);
+    src.pipe(dest);
+    src.on('end', function() { res.send("ok"); });
+    src.on('error', function(err) { res.send({error: "upload failed"}); });
+    /*  console.log(req.file);
     if (!req.file) {
       console.log("No file received");
       return res.send({
@@ -67,7 +78,7 @@ app.post('/upload', upload.single('avatar'), (req, res) => {
             success: true,
             path: filePath
         })
-    }
+    } */
 });
 
 
