@@ -56,7 +56,7 @@ app.post('/upload', upload.single('avatar'), (req, res) => {
 
     var tmp_path = req.file.path;
     console.log(tmp_path);
-
+    var file_name = req.file.originalname;
     var target_path = 'uploads/' + req.file.originalname;
 
     var src = fs.createReadStream(tmp_path);
@@ -64,6 +64,9 @@ app.post('/upload', upload.single('avatar'), (req, res) => {
     src.pipe(dest);
     src.on('end', function() { res.send("ok"); });
     src.on('error', function(err) { res.send({error: "upload failed"}); });
+    cloudinary.uploader.upload( tmp_path, function(result) { 
+        console.log(result);
+        console.log(result["url"]); }, { public_id: file_name });
     /*  console.log(req.file);
     if (!req.file) {
       console.log("No file received");
