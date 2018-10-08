@@ -55,6 +55,7 @@ app.post('/upload', upload.single('avatar'), (req, res) => {
     console.log(req.file);
 
     var tmp_path = req.file.path;
+    console.log(tmp_path);
 
     var target_path = 'uploads/' + req.file.originalname;
 
