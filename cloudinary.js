@@ -45,7 +45,7 @@ app.post('/upload', function(req,res){
         res.end("file uploaded") */
 
 const storage = multer.diskStorage({
-    destination: './uploads',
+    destination: 'uploads/',
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now());
       }
